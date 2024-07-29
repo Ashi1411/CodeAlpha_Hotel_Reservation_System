@@ -65,7 +65,7 @@ public class Hotel_Reservation_System {
             }
         }
 
-        //get rooms of a perticular type
+        //get rooms of a particular type
         static void getRoomsOfType(String type){
             System.out.println("******Rooms Available******");
             for (RoomInfo room : rooms){
@@ -75,7 +75,7 @@ public class Hotel_Reservation_System {
             }
         }
 
-        //get rooms of a perticular price range
+        //get rooms of a particular price range
         static void getRoomsOfRange(double maxPrice){
             System.out.println("******Rooms Available******");
             for (RoomInfo room : rooms){
