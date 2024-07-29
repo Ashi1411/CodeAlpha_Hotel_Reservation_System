@@ -52,10 +52,12 @@ public class Hotel_Reservation_System {
         //add user
         static void addUser(UserInfo user){
             users.add(user);
+            System.out.println("User added");
         }
 
         //get available rooms
         static void getAvailableRooms(){
+            System.out.println("******Rooms Available******");
             for (RoomInfo room : rooms){
                 if (room.isAvailable){
                     System.out.println("Room No : " + room.RoomNo + "   Type : " + room.type +"   Price : " + room.price);
@@ -65,6 +67,7 @@ public class Hotel_Reservation_System {
 
         //get rooms of a perticular type
         static void getRoomsOfType(String type){
+            System.out.println("******Rooms Available******");
             for (RoomInfo room : rooms){
                 if (room.isAvailable && room.type.equals(type)){
                     System.out.println("Room No : " + room.RoomNo + " Type : " + room.type );
@@ -74,6 +77,7 @@ public class Hotel_Reservation_System {
 
         //get rooms of a perticular price range
         static void getRoomsOfRange(double maxPrice){
+            System.out.println("******Rooms Available******");
             for (RoomInfo room : rooms){
                 if (room.isAvailable && room.price <= maxPrice){
                     System.out.println("Room No : " + room.RoomNo + " Type : " + room.type +" Price : " + room.price);
@@ -142,16 +146,6 @@ public class Hotel_Reservation_System {
             System.out.println("Check in date is updated");
         }
 
-        //update check out date
-        static void updateCheckOutDate(String name, Date newCheckOutDate){
-            for (UserInfo user: users){
-                if (user.name == name){
-                    user.checkOutDate = newCheckOutDate;
-                }
-            }
-            System.out.println("Check out date is updated");
-        }
-
         //get check out date
         static Date getCheckOutDate(String name){
             for (UserInfo user: users){
@@ -160,6 +154,16 @@ public class Hotel_Reservation_System {
                 }
             }
             return null;
+        }
+
+        //update check out date
+        static void updateCheckOutDate(String name, Date newCheckOutDate){
+            for (UserInfo user: users){
+                if (user.name == name){
+                    user.checkOutDate = newCheckOutDate;
+                }
+            }
+            System.out.println("Check out date is updated");
         }
 
         //get payment mode 
@@ -186,7 +190,7 @@ public class Hotel_Reservation_System {
             }
         }
 
-        //bood a room
+        //book a room
         static void bookRoom(int RoomNo, String username){
             RoomInfo room = null;
             UserInfo user = null;
@@ -219,6 +223,8 @@ public class Hotel_Reservation_System {
 
         // display user details
         static void displayDetails(String name){
+            System.out.println();
+            System.out.println("******User Details******");
             for (UserInfo user : users){
                 if (user.name.equals(name) && user.room!=null){
                     System.out.println("Name : " + name);
@@ -312,7 +318,7 @@ public class Hotel_Reservation_System {
             }
         }
     }
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({ "deprecation", "static-access" })
     public static void main(String[] args) {
         UserInterface user = new UserInterface();
         user.addRoom("Admin", 101, "Deluxe", 500);
@@ -336,19 +342,19 @@ public class Hotel_Reservation_System {
         user.addUser(new UserInfo("Abc", new Date(2024, 0, 15), new Date(2024, 0, 17), "UPI"));
         user.bookRoom(108, "Abc");
         System.out.println();
-        user.addUser(new UserInfo("Xyz", new Date(2024, 1, 20), new Date(2024, 1, 23), "UPI"));
+        user.addUser(new UserInfo("Xyz", new Date(2024, 1, 20, 7, 00), new Date(2024, 1, 23 , 7 , 00), "UPI"));
         user.bookRoom(105, "Xyz");
-        System.out.println(user.getType(109));
-        System.out.println(user.getPrice(109));
-        System.out.println(user.getIsAvailable(109));
-        System.out.println(user.getCheckInDate("Abc"));
-        System.out.println(user.getCheckOutDate("Abc"));
-        user.getPaymentStatus("Abc");
-        System.out.println(user.getPaymentMode("Abc"));
-        user.cancelReservation("Xyz");
-        System.out.println(user.getRoom("Xyz"));
-        user.deleteRoom("Admin", 110);
         System.out.println();
+        System.out.println("Type : " + user.getType(109));
+        System.out.println("Price : " + user.getPrice(109));
+        System.out.println("Availability of Room : " + user.getIsAvailable(109));
+        System.out.println("Check-In Date : " + user.getCheckInDate("Abc"));
+        System.out.println("Check-Out Date : " + user.getCheckOutDate("Abc"));
+        user.getPaymentStatus("Abc");
+        System.out.println("Payment Mode : " + user.getPaymentMode("Abc"));
+        user.cancelReservation("Xyz");
+        System.out.println("Room No. : " + user.getRoom("Xyz"));
+        user.deleteRoom("Admin", 110);
         user.displayDetails("Abc");
     }
 }
