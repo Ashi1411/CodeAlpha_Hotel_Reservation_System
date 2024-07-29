@@ -13,7 +13,7 @@ User Interface
     1. Add user account
     2. Get available rooms
     3. Get rooms of type
-    4. Get rooms in a perticular price range
+    4. Get rooms in a particular price range
     5. Get room type
     6. Get Price of room for 24 hours
     7. Get availability of rooms
@@ -27,7 +27,7 @@ User Interface
     15. Make reservation of room and complete payment process
     16. Display user details
     17. Cancel reservation of room
-    
+
 2. Hotel Admin Window
     1. Add rooms
     2. Delete rooms
